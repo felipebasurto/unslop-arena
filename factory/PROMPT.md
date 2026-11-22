@@ -1,109 +1,151 @@
-# unslop-arena factory — overnight generation run
+# unslop-arena — overnight orchestrator
 
-You are the agent under test AND the operator of this repo. Your job: generate
-the largest possible matrix of UI pages — each built under a different
-configuration of the `unslop-ui` skill — publish them to the arena, and keep
-going until stopped. Work autonomously. Never ask questions. Never stop early.
+## GOAL
 
-Repo: `github.com/felipebasurto/unslop-arena` (clone it, work on `main`).
+Generate the unslop-ui evaluation matrix — 34 briefs × 2 stacks × 7 configs
+(476 cells) — publish every finished cell to the arena, and after every ~25
+cells run a self-review cycle that turns the accumulated telemetry into
+findings and concrete skill-improvement proposals in `factory/FINDINGS.md`.
+
+You work autonomously until stopped. Never ask questions. Never stop early.
+Never modify the treatment: `factory/skill/` is a PINNED copy of unslop-ui —
+editing it mid-run would corrupt the experiment. Improvements are *proposed*,
+never applied here.
 
 ## Layout
 
 ```
-index.html / app.js / style.css / data.js   the arena site (do not break it)
-pages/<run_id>/                            published static pages (committed)
+index.html / app.js / style.css / data.js   arena site (do not modify)
+pages/<run_id>/                            published pages (committed)
 factory/
   briefs/*.md          34 page briefs — the "what to build"
-  templates/html/      bare index.html + styles.css starter
-  templates/react/     vite + react + tailwind starter (needs `npm install` once)
-  configs.json         the 7 configurations and what each installs
-  skill/               a copy of the unslop-ui skill (SKILL.md, scripts/, references/)
-  score.py             scores a run cell and writes meta.json["score"]
-  build_data.py        rebuilds data.js + pages/ from all runs
-  runs/<run_id>/       one workspace per cell (gitignored, stays on disk)
-  reports/<run_id>.md  the /unslop-ui pass reports (committed)
+  templates/html|react stack starters
+  configs.json         the 7 configurations
+  skill/               PINNED unslop-ui copy — read-only for you
+  score.py             scores a run cell → meta.json["score"]
+  build_data.py        rebuilds data.js + pages/ from runs + ledger
+  runs/<run_id>/       one workspace per cell (gitignored)
+  reports/<run_id>.md  /unslop-ui pass reports (committed)
   ledger.jsonl         one telemetry line per cell (committed)
+  PROGRESS.md          cell checklist
+  FINDINGS.md          YOUR review output — append-only log
+  proposals/           concrete skill-change proposals (markdown diffs)
 ```
 
 ## The matrix
 
-34 briefs × 2 stacks (`html`, `react`) × 7 configs = **476 cells**.
-
-Configs (see `factory/configs.json` for the canonical definitions):
-
-| config | what the workspace gets | passes |
+| config | workspace gets | passes |
 |---|---|---|
 | `control` | nothing | gen |
-| `snippet` | the agents-snippet block appended to `AGENTS.md` | gen |
-| `rules` | full skill at `.devin/skills/unslop-ui-eval/` + prompt says read & apply it | gen |
+| `snippet` | agents-snippet block in `AGENTS.md` | gen |
+| `rules` | skill at `.devin/skills/unslop-ui-eval/` + read-&-apply prompt | gen |
 | `counter` | only `scripts/count_tells.py` + prompt says it exists | gen |
 | `full` | snippet + skill + counter + `.devin/hooks.v1.json` | gen |
 | `edit` | nothing for pass 1; skill installed before pass 2 | gen → unslop |
-| `edit-surface` | same, pass 2 runs with `--surface` | gen → unslop-surface |
+| `edit-surface` | same, pass 2 with `--surface` | gen → unslop-surface |
 
-IMPORTANT for `edit`/`edit-surface`: pass 1 must be a TRUE control — do not read
-the skill, do not apply its rules, generate freely. Only after pass 1 finishes
-do you install the skill and run the unslop pass.
+`edit`/`edit-surface` pass 1 MUST be a true control — no skill influence.
+Prompt extras live in `configs.json → prompt_extras`.
 
-## Cell order — breadth first
+## Order — breadth first
 
-Phase A (do this first, ~68 cells): for EVERY brief, run `html` + `control`
-and `html` + `edit-surface`. These are the two poles (raw vs maximally
-treated) and give coverage of all 34 page types early.
-
-Phase B: for every brief, the remaining html configs (`snippet`, `rules`,
-`counter`, `full`, `edit`), then all 7 configs on `react`, iterating briefs
-round-robin so partial progress still covers everything.
-
-Track progress in `factory/PROGRESS.md` (checkbox per cell) and check it before
-each cell — resume exactly where it stopped if the session restarts.
+- **Phase A** (~68 cells): every brief × `html` × {`control`, `edit-surface`}.
+- **Phase B**: remaining html configs per brief, then react × all 7 configs,
+  iterating briefs round-robin.
+- Check `factory/PROGRESS.md` before every cell; resume exactly where it stopped.
 
 ## Per-cell procedure
 
-Run id: `<brief>.<stack>.<config>-<HHMMSS>` e.g. `kanban.html.control-143022`.
+Run id: `<brief>.<stack>.<config>-<HHMMSS>`.
 
-1. `mkdir -p factory/runs/<run_id>` and copy the stack template into it:
+1. `mkdir -p factory/runs/<run_id>`; copy the stack template:
    - html: `cp factory/templates/html/* factory/runs/<run_id>/`
-   - react: `mkdir factory/runs/<run_id> && cp -R factory/templates/react/index.html factory/templates/react/package.json factory/templates/react/package-lock.json factory/templates/react/tsconfig.json factory/templates/react/vite.config.ts factory/templates/react/src factory/runs/<run_id>/ && ln -sfn "$(cd factory/templates/react && pwd)/node_modules" factory/runs/<run_id>/node_modules`
-     (if `npm run build` fails on the symlink, `cd` into the cell, `rm node_modules && npm install`, retry)
-2. Install what the config says (see table). Concretely:
-   - `snippet`: create `AGENTS.md` in the cell containing `# Project rules` + a blank line + the inner markdown block of `factory/skill/references/agents-snippet.md` (the content between the ```markdown fences).
-   - `skill`: `mkdir -p .devin/skills/unslop-ui-eval && cp -R ../../skill/. .devin/skills/unslop-ui-eval/` — adjust the relative path so it resolves inside the cell (`factory/skill` absolute path is safest).
+   - react: copy `index.html package.json package-lock.json tsconfig.json
+     vite.config.ts src/` then
+     `ln -sfn "$(cd factory/templates/react && pwd)/node_modules" factory/runs/<run_id>/node_modules`
+     (fallback if build fails: `cd` cell, `rm node_modules && npm install`)
+   - First react cell ever: `cd factory/templates/react && npm install` once.
+2. Install what the config says:
+   - `snippet`: `AGENTS.md` = `# Project rules` + blank line + inner markdown
+     block of `factory/skill/references/agents-snippet.md` (between the fences).
+   - `skill`: `mkdir -p .devin/skills/unslop-ui-eval` inside the cell and copy
+     `factory/skill/*` there (absolute paths — you're in the cell dir).
    - `counter`: `mkdir -p scripts && cp <abs>/factory/skill/scripts/count_tells.py scripts/`
-   - `full`: all of the above plus `.devin/hooks.v1.json` = `{"PostToolUse":[{"matcher":"write|edit|apply_patch|notebook_edit","hooks":[{"type":"command","command":"python3 <abs>/factory/skill/scripts/hook.py"}]}]}`. Hooks will not auto-fire in this context — that is expected, install for fidelity anyway.
-   - `rules`/`full`/`edit*` prompt extras are in `configs.json → prompt_extras`.
-3. **Generation pass**: read `factory/briefs/<brief>.md` and build the page.
-   - html stack suffix: "Single self-contained page. `index.html` + `styles.css` (you may add more local files). No build step, no frameworks, no external requests — everything inline or local. It must render by opening `index.html` directly."
-   - react stack suffix: "Build it in `src/` (App.tsx etc). `npm run build` must pass. Keep it one screen."
-   - Apply the config's `prompt_extra` line if the config has one.
-   - Timebox: if generation is not converging after ~15 minutes of edits, ship what you have and note it in meta.
-4. **Unslop pass** (only `edit`, `edit-surface`): install the skill into the cell, then read `.devin/skills/unslop-ui-eval/SKILL.md` and its references, apply the skill to the page sources (`/unslop-ui .` or `/unslop-ui . --surface` semantics), and save the full report (Verdict line, rule table, rewritten strings, kept items, tasks) to `factory/reports/<run_id>.md`. If react, rebuild afterwards.
-5. **Publish the static site** into `factory/runs/<run_id>/site/`:
-   - html: copy `index.html`, `styles.css` and every local asset the page references.
-   - react: `npm run build`, then copy `dist/*` into `site/`.
-   - `site/index.html` must exist and render standalone.
-6. **Score**: `python3 factory/score.py factory/runs/<run_id>` — writes `meta.json["score"]`.
-7. **meta.json** in the run dir, exactly this shape:
-   ```json
-   {"id":"<run_id>","brief":"<brief>","stack":"html|react","agent":"devin-cloud","config":"<config>","status":"ok|error","seconds":<int>,"passes":[{"name":"gen","seconds":<int>},{"name":"unslop","seconds":<int>}],"build":"ok|fail","ts":"<iso8601>"}
-   ```
-   `score.py` fills `score`. On error still write meta.json with `status:"error"` and a `note`.
-8. **Ledger**: append one line to `factory/ledger.jsonl`:
+   - `full`: all of the above + `.devin/hooks.v1.json`:
+     `{"PostToolUse":[{"matcher":"write|edit|apply_patch|notebook_edit","hooks":[{"type":"command","command":"python3 <abs>/factory/skill/scripts/hook.py"}]}]}`
+     Hooks won't auto-fire here — install anyway for fidelity.
+3. **Gen pass**: read `factory/briefs/<brief>.md`, build the page.
+   - html suffix: "Single self-contained page. `index.html` + `styles.css` (more
+     local files allowed). No build step, no frameworks, no external requests.
+     Must render by opening `index.html` directly."
+   - react suffix: "Build it in `src/`. `npm run build` must pass. One screen."
+   - Apply the config's `prompt_extra` if present.
+   - Timebox ~15 min of unproductive editing → ship what you have, note it.
+4. **Unslop pass** (`edit`, `edit-surface` only): install the skill, read
+   `.devin/skills/unslop-ui-eval/SKILL.md` + references, apply it to the page
+   sources (`/unslop-ui .` / `--surface` semantics), save the FULL report
+   (Verdict, rule table, rewritten, kept, tasks) to `factory/reports/<run_id>.md`.
+   Rebuild react afterwards.
+5. **Publish**: `factory/runs/<run_id>/site/` must contain `index.html` + every
+   local asset. html → copy page files; react → `npm run build` then copy `dist/*`.
+6. **Score**: `python3 factory/score.py factory/runs/<run_id>`.
+7. **meta.json** in the run dir:
+   `{"id","brief","stack","agent":"devin-cloud","config","status":"ok|error","seconds","passes":[{"name","seconds"}],"build","ts","note"?}`
+8. **Ledger**: append to `factory/ledger.jsonl`:
    `{"id","brief","stack","agent":"devin-cloud","config","status","seconds","surface_total","ts"}`
-   where `surface_total` = `meta.score.surface.total` (0 if error).
-9. Mark the cell done in `factory/PROGRESS.md`.
+9. Check the cell off in `factory/PROGRESS.md`.
+
+## Self-review loop — every ~25 completed cells
+
+When the cell count since the last review hits ~25 (and always at the end of
+Phase A), pause generation and run a review cycle — budget ~10-15 min:
+
+1. **Aggregate**: from `factory/ledger.jsonl` compute per-config and per-brief
+   stats — mean/median `surface_total`, error rate, mean `seconds`. A short
+   python script is fine; save it as `factory/analyze.py` so it's reusable.
+2. **Sample**: read 3-5 `factory/reports/*.md` from the weakest-looking cells
+   (highest slop in a treated config, or lowest in control) plus 1-2 control
+   cells for contrast.
+3. **Append to `factory/FINDINGS.md`** a dated entry:
+   ```
+   ## Review <date> — cells <a>→<b> (<n> total)
+   - Numbers: <config × stack slop table, notable per-brief outliers>
+   - Observations: <what the data shows, with run ids as evidence>
+   - Hypotheses: <why — tie to specific rules U1-U26 / unslop items>
+   - Proposals: <links to factory/proposals/*.md>
+   - Next: <what the next cycle should check>
+   ```
+4. **Proposals**: when a finding implies a concrete skill change, write
+   `factory/proposals/NNN-<slug>.md` containing: the evidence (run ids,
+   scores, report excerpts), the proposed change (which file, what text —
+   a unified-diff-style block is ideal), expected effect, and how to
+   validate it later. Number sequentially. These are the input for the
+   skill-improvement pass on the real repo — make them copy-paste actionable.
+5. Resume generation.
+
+Review lenses to apply each cycle (rotate emphasis):
+- Does `snippet` ≈ `rules` ≈ `full` on structural tells? Where does each win?
+- Which briefs produce the most residual slop AFTER `edit-surface`? (skill gaps)
+- Counter vs reality: do `control` cells with low counter scores still look
+  slop-y in `pages/`? (counter blind spots → proposals for count_tells.py)
+- Guardrail leaks: any deleted links/buttons, invented claims, broken states?
+- html vs react asymmetry per config.
+- Time cost: `seconds` by config — is the unslop pass worth its minutes?
 
 ## Cadence
 
-- Every ~10 completed cells: `python3 factory/build_data.py && git add -A && git commit -m "cells: <n> new (<briefs>)" && git push`
-- Every ~25 cells or if data.js looks stale: run `build_data.py` before committing so `pages/` and `data.js` stay fresh.
-- If the session is ending or context is tight: finish the current cell, run `build_data.py`, commit and push everything, update PROGRESS.md.
+- Every ~10 cells: `python3 factory/build_data.py && git add -A && git commit -m "cells: <n> new" && git push`
+- Every review cycle: commit FINDINGS.md + proposals + analyze.py too.
+- Session ending / context tight: finish current cell → `build_data.py` →
+  final FINDINGS entry → commit + push → stop.
 
-## Rules
+## Hard rules
 
-- Pages in English, mock data inline, no external services, no real images (CSS shapes/gradients/initials).
+- English pages, mock data inline, no external services, no real images.
 - Match each brief's required elements — they are the spec.
-- `control` cells must contain zero skill influence. `snippet`/`rules`/`counter`/`full` get exactly what the config says — no more.
-- Do not modify the arena files (`index.html`, `app.js`, `style.css`), `factory/skill/`, `factory/score.py`, `factory/build_data.py`, or `factory/briefs/` — you are the subject, not the experimenter.
-- If a cell fails twice, mark it `status:"error"` in meta + ledger and move on. Do not loop.
-- Quality bar for yourself: the page must actually look like a real product screen — layout, spacing, typography, states. Slop is the variable under test, not brokenness.
+- `control` = zero skill influence. Other configs = exactly what they say.
+- NEVER modify: arena files, `factory/skill/`, `factory/score.py`,
+  `factory/build_data.py`, `factory/briefs/`, `factory/configs.json`.
+  You may add `factory/analyze.py`, `factory/FINDINGS.md`, `factory/proposals/`.
+- A cell failing twice → `status:"error"` in meta + ledger, move on.
+- Pages must look like real product UI — slop is the variable, brokenness is not.
