@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>unslop arena</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<iframe id="frame" title="generated page"></iframe>
+
+<div id="stamp" class="hidden"></div>
+
+<div id="console">
+  <div id="progress"><div id="progress-fill"></div></div>
+  <div id="deck-line"><span id="deck-pos"></span><span id="telemetry"></span></div>
+  <div id="readout-row">
+    <span id="verdict">rate the slop</span>
+    <span id="readout">50</span>
+  </div>
+  <input id="slop" type="range" min="0" max="100" step="1" value="50" aria-label="slop score">
+  <div id="scale"><span>0 · handcrafted</span><span>100 · slop incarnate</span></div>
+</div>
+
+<div id="end" class="hidden">
+  <div id="end-box">
+    <div id="end-avg"></div>
+    <button id="again">again</button>
+  </div>
+</div>
+
+<button id="index-btn" type="button">index</button>
+<div id="index-view" class="hidden">
+  <div id="index-head"><span>index</span><button id="index-close" type="button">close</button></div>
+  <div id="index-grid"></div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

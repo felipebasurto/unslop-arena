@@ -1,0 +1,52 @@
+{
+  "_doc": "Each config is what the agent gets besides the brief. 'install' lists workspace pieces the runner materializes: snippet (agents-snippet.md into AGENTS.md), skill (.devin/skills/unslop-ui-eval from this checkout), hook (.devin/hooks.v1.json + hook.py), counter (scripts/count_tells.py). 'passes': gen = write the page; unslop = second agent invocation running the skill on the result; unslop-surface = same with --surface. 'prompt_extra' names a line appended to the generation prompt.",
+  "configs": {
+    "control": {
+      "why": "Baseline. Nothing installed, no mention of slop.",
+      "install": [],
+      "passes": ["gen"]
+    },
+    "snippet": {
+      "why": "The keep-tells-out block from references/agents-snippet.md lives in AGENTS.md. Rules while writing, minimal tokens.",
+      "install": ["snippet"],
+      "passes": ["gen"]
+    },
+    "rules": {
+      "why": "Full SKILL.md installed as a project skill; the prompt tells the agent to read and apply it while writing. One pass.",
+      "install": ["skill"],
+      "passes": ["gen"],
+      "prompt_extra": "read-skill"
+    },
+    "edit": {
+      "why": "Generate freely, then a second invocation runs /unslop-ui-eval on the result. The skill's current intended use. The skill is installed only before pass 2, so pass 1 is a true control.",
+      "install": [],
+      "install_per_pass": {"unslop": ["skill"]},
+      "passes": ["gen", "unslop"]
+    },
+    "edit-surface": {
+      "why": "Same two passes, second one with --surface (visual rules too).",
+      "install": [],
+      "install_per_pass": {"unslop-surface": ["skill"]},
+      "passes": ["gen", "unslop-surface"]
+    },
+    "counter": {
+      "why": "Only count_tells.py sits in the workspace and the prompt says it exists. Ablation: does the counter alone change output?",
+      "install": ["counter"],
+      "passes": ["gen"],
+      "prompt_extra": "counter-available"
+    },
+    "full": {
+      "why": "Everything at once: snippet rules, skill, post-write hook, counter. Agent decides how to use them.",
+      "install": ["snippet", "skill", "hook", "counter"],
+      "passes": ["gen"]
+    }
+  },
+  "prompt_extras": {
+    "read-skill": "Before you write any code, read .devin/skills/unslop-ui-eval/SKILL.md and the reference files it points to, and apply its rules while you build the page.",
+    "counter-available": "A tell-counter script is available at scripts/count_tells.py — you may run it on your work if you find it useful."
+  },
+  "pass_prompts": {
+    "unslop": "/unslop-ui-eval .",
+    "unslop-surface": "/unslop-ui-eval . --surface"
+  }
+}

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing | Northbeam</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#">Northbeam</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#">Product</a>
+        <a href="#">Customers</a>
+        <a href="#">Pricing</a>
+        <a href="#">Docs</a>
+      </nav>
+      <a class="btn btn-ghost header-cta" href="#">Sign in</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <h1>Pricing that grows with your revenue.</h1>
+      <p class="lede">Start free for 14 days with no credit card required. Pick the plan that fits your team today and change it anytime as you scale.</p>
+    </section>
+
+    <section class="billing container" aria-label="Plans and billing period">
+      <input type="radio" name="billing-period" id="bill-monthly" class="billing-input" checked>
+      <input type="radio" name="billing-period" id="bill-annual" class="billing-input">
+
+      <div class="toggle-wrap">
+        <div class="toggle" role="group" aria-label="Billing period">
+          <label for="bill-monthly">Monthly</label>
+          <label for="bill-annual">Annual</label>
+        </div>
+        <p class="billing-caption">
+          <span class="cap cap-monthly">Billed monthly, cancel anytime.</span>
+          <span class="cap cap-annual">Billed annually. Save 20% on every plan.</span>
+        </p>
+      </div>
+
+      <div class="plans">
+        <article class="plan">
+          <h2 class="plan-name">Starter</h2>
+          <p class="audience">For small teams getting their first real handle on revenue.</p>
+          <div class="price">
+            <span class="amount amount-monthly">$49</span>
+            <span class="amount amount-annual">$39</span>
+            <span class="per">/mo</span>
+          </div>
+          <p class="price-sub">
+            <span class="sub sub-monthly">per month, billed monthly</span>
+            <span class="sub sub-annual">per month, billed annually ($468/yr)</span>
+          </p>
+          <ul class="features">
+            <li>Up to 3 connected data sources</li>
+            <li>Core revenue dashboards (MRR, ARR, churn)</li>
+            <li>Weekly email reports</li>
+            <li>Up to 5 seats</li>
+            <li>12 months of data history</li>
+            <li>Community support</li>
+          </ul>
+          <a class="btn btn-secondary plan-cta" href="#">Start free trial</a>
+        </article>
+
+        <article class="plan plan-featured">
+          <h2 class="plan-name">Growth</h2>
+          <p class="audience">For growing SaaS teams that need reliable, board-ready revenue reporting.</p>
+          <div class="price">
+            <span class="amount amount-monthly">$119</span>
+            <span class="amount amount-annual">$95</span>
+            <span class="per">/mo</span>
+          </div>
+          <p class="price-sub">
+            <span class="sub sub-monthly">per month, billed monthly</span>
+            <span class="sub sub-annual">per month, billed annually ($1,140/yr)</span>
+          </p>
+          <ul class="features">
+            <li>Everything in Starter</li>
+            <li>Unlimited data sources and custom metrics</li>
+            <li>Revenue forecasting &amp; scenario modeling</li>
+            <li>Real-time Slack alerts</li>
+            <li>Unlimited seats</li>
+            <li>24 months of data history</li>
+            <li>Priority email support</li>
+          </ul>
+          <a class="btn btn-primary plan-cta" href="#">Start free trial</a>
+        </article>
+
+        <article class="plan">
+          <h2 class="plan-name">Scale</h2>
+          <p class="audience">For larger orgs with complex data stacks and compliance requirements.</p>
+          <div class="price">
+            <span class="amount amount-monthly">$249</span>
+            <span class="amount amount-annual">$199</span>
+            <span class="per">/mo</span>
+          </div>
+          <p class="price-sub">
+            <span class="sub sub-monthly">per month, billed monthly</span>
+            <span class="sub sub-annual">per month, billed annually ($2,388/yr)</span>
+          </p>
+          <ul class="features">
+            <li>Everything in Growth</li>
+            <li>SSO / SAML and audit logs</li>
+            <li>Custom integrations &amp; warehouse sync</li>
+            <li>Dedicated customer success manager</li>
+            <li>99.9% uptime SLA</li>
+            <li>White-glove onboarding</li>
+          </ul>
+          <a class="btn btn-secondary plan-cta" href="#">Contact sales</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq container">
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Is there a free trial?</summary>
+          <p>Yes. Every plan starts with a 14-day free trial and no credit card required. During the trial you get full access to Growth-tier features, so you can evaluate Northbeam on your real revenue data before choosing a plan.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I switch plans or billing periods later?</summary>
+          <p>Absolutely. You can upgrade or downgrade at any time, and plan changes take effect immediately with prorated billing. Switching from annual to monthly billing applies at your next renewal date. Your remaining annual term is honored first.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What counts as a data source?</summary>
+          <p>Any system you connect to Northbeam: Stripe, Salesforce, HubSpot, QuickBooks, your data warehouse, or a custom integration. Starter includes up to 3 sources; Growth and Scale include unlimited sources.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you offer discounts for startups or nonprofits?</summary>
+          <p>Yes. Early-stage startups under $2M ARR qualify for 50% off their first year, and registered nonprofits receive 30% off any plan. Reach out to sales@northbeam.io and we'll set it up for you.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-note">
+      <p>Prices in USD. Applicable taxes may be added at checkout. Questions about enterprise pricing or custom contract terms? <a href="mailto:sales@northbeam.io">Contact our sales team</a>.</p>
+      <p class="footer-copy">&copy; 2025 Northbeam, Inc. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

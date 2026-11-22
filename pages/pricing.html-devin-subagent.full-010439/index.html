@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en" data-billing="monthly">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Plans and pricing for Northbeam revenue analytics.">
+  <title>Pricing | Northbeam</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">Northbeam<span class="brand-dot">.</span></a>
+      <nav class="site-nav">
+        <a href="#">Sign in</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Pricing for B2B revenue teams</h1>
+        <p class="lede">Start any plan with a 14-day free trial. No credit card required.</p>
+
+        <div class="billing-row">
+          <div class="billing-toggle" role="group" aria-label="Billing period">
+            <button type="button" class="toggle-option is-active" data-period="monthly" aria-pressed="true">Monthly</button>
+            <button type="button" class="toggle-option" data-period="annual" aria-pressed="false">Annual</button>
+          </div>
+          <span class="billing-save">Save 20%</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="plans" aria-label="Plans">
+      <div class="container">
+        <div class="plans-grid">
+
+          <article class="plan">
+            <div class="plan-head">
+              <h2 class="plan-name">Starter</h2>
+            </div>
+            <p class="plan-audience">For small teams tracking their first revenue metrics.</p>
+            <p class="price">
+              <span class="amount"><span class="only-monthly">$50</span><span class="only-annual">$40</span></span>
+              <span class="per">/mo</span>
+            </p>
+            <p class="bill-note">
+              <span class="only-monthly">Billed monthly</span>
+              <span class="only-annual">Billed annually ($480/year)</span>
+            </p>
+            <ul class="features">
+              <li>Revenue dashboards for MRR, ARR and churn</li>
+              <li>Billing sync with Stripe and Chargebee</li>
+              <li>Weekly email reports</li>
+              <li>Slack and Salesforce integrations</li>
+              <li>Up to 5 seats</li>
+              <li>12 months of data history</li>
+            </ul>
+            <a class="btn btn-outline" href="#">Start free trial</a>
+          </article>
+
+          <article class="plan plan--featured">
+            <div class="plan-head">
+              <h2 class="plan-name">Growth</h2>
+              <span class="badge-recommended">Recommended</span>
+            </div>
+            <p class="plan-audience">For growing teams that forecast and plan ahead.</p>
+            <p class="price">
+              <span class="amount"><span class="only-monthly">$150</span><span class="only-annual">$120</span></span>
+              <span class="per">/mo</span>
+            </p>
+            <p class="bill-note">
+              <span class="only-monthly">Billed monthly</span>
+              <span class="only-annual">Billed annually ($1,440/year)</span>
+            </p>
+            <ul class="features">
+              <li class="includes">Everything in Starter</li>
+              <li>Cohort and segment analysis</li>
+              <li>Revenue forecasting</li>
+              <li>Custom dashboards</li>
+              <li>Warehouse sync with Snowflake and BigQuery</li>
+              <li>Up to 20 seats</li>
+              <li>Priority support</li>
+            </ul>
+            <a class="btn btn-solid" href="#">Start free trial</a>
+          </article>
+
+          <article class="plan">
+            <div class="plan-head">
+              <h2 class="plan-name">Scale</h2>
+            </div>
+            <p class="plan-audience">For companies that need custom models and dedicated support.</p>
+            <p class="price">
+              <span class="amount"><span class="only-monthly">$250</span><span class="only-annual">$200</span></span>
+              <span class="per">/mo</span>
+            </p>
+            <p class="bill-note">
+              <span class="only-monthly">Billed monthly</span>
+              <span class="only-annual">Billed annually ($2,400/year)</span>
+            </p>
+            <ul class="features">
+              <li class="includes">Everything in Growth</li>
+              <li>Custom revenue models</li>
+              <li>SSO and SCIM provisioning</li>
+              <li>Dedicated success manager</li>
+              <li>API access</li>
+              <li>99.9% uptime SLA</li>
+              <li>Unlimited data history</li>
+            </ul>
+            <a class="btn btn-outline" href="#">Contact sales</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container faq-inner">
+        <h2>Frequently asked questions</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Is there a free trial?</summary>
+            <p class="faq-answer">Yes. Every plan starts with a 14-day free trial. You won't be charged until it ends, and you can cancel at any time.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I change plans later?</summary>
+            <p class="faq-answer">Yes. Upgrade or downgrade from your billing settings. Changes take effect at the start of your next billing cycle, and we prorate the difference.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What counts as a seat?</summary>
+            <p class="faq-answer">A seat is a teammate who can sign in to your workspace. People who only view a shared dashboard don't use a seat.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do you offer discounts for startups or nonprofits?</summary>
+            <p class="faq-answer">Annual billing already saves 20% on every plan. For larger rollouts or special pricing, <a href="mailto:sales@northbeam.com">contact sales</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Prices are in USD, excluding applicable taxes. For custom agreements, <a href="mailto:sales@northbeam.com">contact sales</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var options = document.querySelectorAll('.toggle-option');
+      options.forEach(function (option) {
+        option.addEventListener('click', function () {
+          var period = option.getAttribute('data-period');
+          document.documentElement.setAttribute('data-billing', period);
+          options.forEach(function (other) {
+            var active = other === option;
+            other.classList.toggle('is-active', active);
+            other.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

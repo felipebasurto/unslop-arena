@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing — Northbeam</title>
+  <meta name="description" content="Northbeam pricing: revenue analytics plans for B2B software companies. Starter, Growth, and Scale — start free for 14 days.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="page">
+
+  <!-- Billing radios live at the top of <main> so pure-CSS sibling selectors
+       can swap prices and toggle styles anywhere below. -->
+  <input class="visually-hidden" type="radio" name="billing" id="bill-monthly" value="monthly" checked>
+  <input class="visually-hidden" type="radio" name="billing" id="bill-annual" value="annual">
+
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Northbeam home">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 1.8l2.5 7.2 7.2 2.5-7.2 2.5L12 21.2l-2.5-7.2L2.3 11.5l7.2-2.5z"/></svg>
+      <span>Northbeam</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#">Product</a>
+      <a href="#" aria-current="page">Pricing</a>
+      <a href="#">Docs</a>
+    </nav>
+    <div class="header-actions">
+      <a class="signin" href="#">Sign in</a>
+      <a class="btn btn-small btn-primary" href="#">Get started</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">Pricing</p>
+    <h1>Pricing that grows with your <span class="hl">revenue</span>.</h1>
+    <p class="lede">Unify pipeline, billing, and product data into one clear revenue picture — then pay only for the scale you actually need.</p>
+
+    <div class="billing-toggle" role="group" aria-label="Billing period">
+      <label class="toggle-option" for="bill-monthly">Monthly</label>
+      <label class="toggle-option" for="bill-annual">Annual<span class="save-chip">Save 20%</span></label>
+      <span class="toggle-thumb" aria-hidden="true"></span>
+    </div>
+    <p class="toggle-caption">All prices in USD · billed per workspace</p>
+  </section>
+
+  <section class="plans" aria-label="Plans and pricing">
+    <div class="plans-grid">
+
+      <article class="card">
+        <h2 class="card-name">Starter</h2>
+        <p class="audience">For early teams finding their first revenue signals.</p>
+        <p class="price"><span class="amounts"><span class="amount amount-monthly">$29</span><span class="amount amount-annual">$23</span></span><span class="per">/mo</span></p>
+        <p class="billing-note"><span class="note note-monthly">Billed monthly · cancel anytime</span><span class="note note-annual">Billed annually · $276/yr</span></p>
+        <ul class="features">
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 3 data source connections</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>10,000 revenue events / month</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Core revenue dashboards</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>15 seats included</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>90-day data history</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Community support</li>
+        </ul>
+        <a class="btn btn-outline btn-block" href="#">Start free trial</a>
+      </article>
+
+      <article class="card card-featured">
+        <span class="popular-badge">Most popular</span>
+        <h2 class="card-name">Growth</h2>
+        <p class="audience">For scaling revenue teams that live in their numbers.</p>
+        <p class="price"><span class="amounts"><span class="amount amount-monthly">$79</span><span class="amount amount-annual">$63</span></span><span class="per">/mo</span></p>
+        <p class="billing-note"><span class="note note-monthly">Billed monthly · cancel anytime</span><span class="note note-annual">Billed annually · $756/yr</span></p>
+        <ul class="features">
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited data source connections</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>100,000 revenue events / month</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Custom dashboards &amp; forecast models</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Real-time CRM &amp; Slack alerts</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>100 seats included</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>24-month data history</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
+        </ul>
+        <a class="btn btn-featured btn-block" href="#">Start free trial</a>
+      </article>
+
+      <article class="card">
+        <h2 class="card-name">Scale</h2>
+        <p class="audience">For enterprises that need control, security, and room to grow.</p>
+        <p class="price"><span class="amounts"><span class="amount amount-monthly">$249</span><span class="amount amount-annual">$199</span></span><span class="per">/mo</span></p>
+        <p class="billing-note"><span class="note note-monthly">Billed monthly · cancel anytime</span><span class="note note-annual">Billed annually · $2,388/yr</span></p>
+        <ul class="features">
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Growth</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited events, seats &amp; workspaces</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Advanced multi-touch attribution</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>SSO/SAML, SCIM &amp; audit logs</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Custom retention &amp; 99.9% uptime SLA</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Dedicated success manager</li>
+          <li><svg class="check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.4 8.6l2.9 2.9 6.3-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>White-glove onboarding &amp; migration</li>
+        </ul>
+        <a class="btn btn-outline btn-block" href="mailto:sales@northbeam.com">Contact sales</a>
+      </article>
+
+    </div>
+    <p class="plans-note">Every plan starts with a 14-day free trial. No credit card required.</p>
+  </section>
+
+  <section class="faq" aria-label="Frequently asked questions">
+    <h2>Questions, answered</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><span>Is there a free trial?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>Yes. Every plan starts with a 14-day free trial of Growth — full dashboards, forecasting, and integrations. No credit card required, and you can downgrade or cancel before the trial ends.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span>Can I change plans or cancel anytime?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>Absolutely. Upgrades take effect immediately and are prorated; downgrades and cancellations apply at the end of your current billing cycle. Annual plans can be refunded within the first 30 days.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span>How are revenue events counted?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>Each row synced from your billing system, CRM, warehouse, or product analytics counts as one revenue event. Starter includes 10,000 events per month, Growth includes 100,000, and Scale is unlimited — you can monitor usage anytime in Settings.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span>Do you offer discounts or enterprise terms?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>Early-stage startups under $2M ARR get 50% off Growth for their first year. For procurement, custom contracts, security reviews, or volume pricing, contact our sales team at <a href="mailto:sales@northbeam.com">sales@northbeam.com</a>.</p></div>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <p>Prices are in USD and exclude applicable taxes. Need SSO, custom contracts, or procurement terms? <a href="mailto:sales@northbeam.com">Contact our sales team</a>.</p>
+    <p class="fine">© 2025 Northbeam, Inc. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

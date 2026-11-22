@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing | Northbeam</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="#">Northbeam</a>
+      <a class="nav-link" href="#">Sign in</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Pricing</h1>
+        <p class="lede">Revenue analytics for B2B software companies. Every plan starts with a 14-day free trial.</p>
+      </div>
+    </section>
+
+    <section class="plans-section" aria-label="Plans">
+      <div class="container">
+        <div class="billing">
+          <input class="billing-input" type="radio" name="billing" id="billing-monthly" value="monthly" checked>
+          <input class="billing-input" type="radio" name="billing" id="billing-annual" value="annual">
+
+          <div class="billing-toggle">
+            <label class="billing-option" for="billing-monthly">Monthly</label>
+            <label class="billing-option" for="billing-annual">Annual <span class="billing-save">Save 20%</span></label>
+          </div>
+
+          <div class="plan-grid">
+            <article class="plan-card">
+              <div class="plan-head">
+                <h2 class="plan-name">Starter</h2>
+              </div>
+              <p class="plan-audience">For founders validating their revenue model</p>
+              <p class="plan-price">
+                <span class="price price-monthly">$30</span><span class="price price-annual">$24</span><span class="price-period">/mo</span>
+              </p>
+              <p class="plan-billing">
+                <span class="note-monthly">Billed monthly</span><span class="note-annual">Billed annually ($288/year)</span>
+              </p>
+              <ul class="plan-features">
+                <li>MRR and ARR tracking</li>
+                <li>Revenue by plan and segment</li>
+                <li>Stripe and billing sync</li>
+                <li>Weekly revenue digest</li>
+                <li>CSV export</li>
+                <li>Up to 5 seats</li>
+              </ul>
+              <a class="plan-cta plan-cta-secondary" href="#">Start free trial</a>
+            </article>
+
+            <article class="plan-card plan-card-featured">
+              <div class="plan-head">
+                <h2 class="plan-name">Growth</h2>
+                <span class="plan-badge">Recommended</span>
+              </div>
+              <p class="plan-audience">For revenue teams at growing companies</p>
+              <p class="plan-price">
+                <span class="price price-monthly">$100</span><span class="price price-annual">$80</span><span class="price-period">/mo</span>
+              </p>
+              <p class="plan-billing">
+                <span class="note-monthly">Billed monthly</span><span class="note-annual">Billed annually ($960/year)</span>
+              </p>
+              <ul class="plan-features">
+                <li>Everything in Starter</li>
+                <li>Churn and expansion reporting</li>
+                <li>Revenue forecasting</li>
+                <li>Saved dashboards</li>
+                <li>Salesforce sync</li>
+                <li>Up to 25 seats</li>
+                <li>Two years of data history</li>
+              </ul>
+              <a class="plan-cta plan-cta-primary" href="#">Start free trial</a>
+            </article>
+
+            <article class="plan-card">
+              <div class="plan-head">
+                <h2 class="plan-name">Scale</h2>
+              </div>
+              <p class="plan-audience">For enterprises with complex revenue models</p>
+              <p class="plan-price">
+                <span class="price price-monthly">$250</span><span class="price price-annual">$200</span><span class="price-period">/mo</span>
+              </p>
+              <p class="plan-billing">
+                <span class="note-monthly">Billed monthly</span><span class="note-annual">Billed annually ($2,400/year)</span>
+              </p>
+              <ul class="plan-features">
+                <li>Everything in Growth</li>
+                <li>Multi-currency and multi-entity reporting</li>
+                <li>Custom revenue models</li>
+                <li>SSO and audit log</li>
+                <li>Dedicated onboarding</li>
+                <li>Priority support</li>
+              </ul>
+              <a class="plan-cta plan-cta-secondary" href="mailto:sales@northbeam.com">Contact sales</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container faq-inner">
+        <h2>Frequently asked questions</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Is there a free trial?</summary>
+            <p>Yes. Every plan starts with a 14-day free trial. Cancel before the trial ends and you won't be charged.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What counts as a seat?</summary>
+            <p>A seat is a teammate who can sign in to Northbeam. Viewers and integrations don't count toward the limit.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I change plans later?</summary>
+            <p>Yes. Upgrades take effect immediately and we prorate the difference. Downgrades start at your next billing period.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do you offer discounts for startups or nonprofits?</summary>
+            <p>Yes. Early-stage startups and nonprofits can <a href="mailto:sales@northbeam.com">contact sales</a> for custom pricing.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-note">All prices are in USD and exclude applicable taxes. Need a custom plan? <a href="mailto:sales@northbeam.com">Contact sales</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

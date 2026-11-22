@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northbeam Pricing</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Billing period state: unchecked = monthly, checked = annual (20% off) -->
+  <input class="billing-input" type="checkbox" id="annual-billing">
+
+  <!-- Inline icon sprite (no external assets) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-check" viewBox="0 0 16 16">
+      <path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-logo" viewBox="0 0 32 32">
+      <rect width="32" height="32" rx="8" fill="#4f46e5"/>
+      <path d="M8 22.5v-6M14 22.5V12M20 22.5v-9M26 22.5V15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+
+  <div class="site">
+    <header class="site-header">
+      <a class="brand" href="#">
+        <svg class="brand__mark" aria-hidden="true"><use href="#i-logo"/></svg>
+        Northbeam
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#">Product</a>
+        <a href="#">Integrations</a>
+        <a href="#">Docs</a>
+        <a class="nav__cta" href="#">Sign in</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Pricing that grows with your revenue</h1>
+        <p class="lede">Choose the plan that fits your team today. You can upgrade, downgrade, or cancel anytime. Every plan starts with a 14-day free trial.</p>
+
+        <div class="billing-toggle" role="group" aria-label="Billing period">
+          <span class="billing-toggle__label billing-toggle__label--monthly">Monthly</span>
+          <label class="switch" for="annual-billing" aria-label="Switch to annual billing">
+            <span class="switch__track"><span class="switch__thumb"></span></span>
+          </label>
+          <span class="billing-toggle__label billing-toggle__label--annual">Annual <span class="save-pill">save 20%</span></span>
+        </div>
+      </section>
+
+      <section class="plans" aria-label="Plans">
+        <!-- Starter -->
+        <article class="plan">
+          <h3 class="plan__name">Starter</h3>
+          <p class="plan__audience">For small teams getting their first dashboards up and running</p>
+          <div class="plan__price">
+            <span class="price price--monthly">$49<small>/mo</small></span>
+            <span class="price price--annual">$39<small>/mo</small></span>
+            <p class="plan__price-note plan__price-note--monthly">Billed monthly · cancel anytime</p>
+            <p class="plan__price-note plan__price-note--annual">Billed annually at $468/year</p>
+            <p class="plan__save">You save $120/year</p>
+          </div>
+          <ul class="features">
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Up to 3 team seats</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>1 connected data source</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Core revenue dashboards</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Weekly metric email snapshots</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>12-month data history</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Email support</li>
+          </ul>
+          <a class="btn btn--ghost" href="#">Start free trial</a>
+        </article>
+
+        <!-- Growth (recommended) -->
+        <article class="plan plan--featured">
+          <h3 class="plan__name">Growth</h3>
+          <p class="plan__audience">For scaling teams that run the business on their numbers</p>
+          <div class="plan__price">
+            <span class="price price--monthly">$129<small>/mo</small></span>
+            <span class="price price--annual">$103<small>/mo</small></span>
+            <p class="plan__price-note plan__price-note--monthly">Billed monthly · cancel anytime</p>
+            <p class="plan__price-note plan__price-note--annual">Billed annually at $1,236/year</p>
+            <p class="plan__save">You save $312/year</p>
+          </div>
+          <ul class="features">
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Up to 15 team seats</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Up to 10 data sources</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Unlimited custom dashboards &amp; reports</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Revenue forecasting &amp; cohort analysis</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Slack &amp; email alerts</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Unlimited data history</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Priority support</li>
+          </ul>
+          <a class="btn btn--ghost" href="#">Start free trial</a>
+        </article>
+
+        <!-- Scale -->
+        <article class="plan">
+          <h3 class="plan__name">Scale</h3>
+          <p class="plan__audience">For larger organizations with complex data and compliance needs</p>
+          <div class="plan__price">
+            <span class="price price--monthly">$299<small>/mo</small></span>
+            <span class="price price--annual">$239<small>/mo</small></span>
+            <p class="plan__price-note plan__price-note--monthly">Billed monthly · cancel anytime</p>
+            <p class="plan__price-note plan__price-note--annual">Billed annually at $2,868/year</p>
+            <p class="plan__save">You save $720/year</p>
+          </div>
+          <ul class="features">
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Unlimited seats &amp; data sources</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Custom metrics &amp; SQL access</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>SSO / SAML, audit logs &amp; roles</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Dedicated customer success manager</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>99.9% uptime SLA</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Data migration &amp; onboarding help</li>
+            <li><svg class="check" aria-hidden="true"><use href="#i-check"/></svg>Quarterly business reviews</li>
+          </ul>
+          <a class="btn btn--ghost" href="mailto:sales@northbeam.io">Talk to sales</a>
+        </article>
+      </section>
+
+      <section class="faq" aria-label="Frequently asked questions">
+        <h2>Frequently asked questions</h2>
+
+        <details>
+          <summary>Is there a free trial?</summary>
+          <p class="faq__answer">Yes, every plan includes a 14-day free trial with full access to the Growth feature set. No credit card required. When the trial ends, pick the plan that fits or keep exploring on Starter.</p>
+        </details>
+
+        <details>
+          <summary>Can I change plans later?</summary>
+          <p class="faq__answer">Yes. You can upgrade or downgrade at any time from your billing settings. Upgrades take effect immediately and are prorated; downgrades apply at the start of your next billing cycle.</p>
+        </details>
+
+        <details>
+          <summary>What counts as a seat and a data source?</summary>
+          <p class="faq__answer">A seat is any team member with login access to Northbeam. View-only guests don&rsquo;t count. A data source is any connected system, such as your billing platform, CRM, or data warehouse.</p>
+        </details>
+
+        <details>
+          <summary>Do you offer discounts for startups or nonprofits?</summary>
+          <p class="faq__answer">Yes. Early-stage startups under $1M ARR and registered nonprofits can apply for 50% off any plan for the first year. Reach out to <a href="mailto:sales@northbeam.io">sales@northbeam.io</a> and we&rsquo;ll set it up.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>All prices are in USD and exclude applicable taxes. Need a custom plan, invoiced billing, or volume pricing? <a href="mailto:sales@northbeam.io">Talk to sales</a>.</p>
+      <p class="site-footer__copy">&copy; Northbeam, Inc. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>

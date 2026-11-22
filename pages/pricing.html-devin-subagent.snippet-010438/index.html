@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northbeam — Pricing</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <svg class="brand-mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M8 1.5 14.5 14h-13L8 1.5Z" fill="currentColor"/>
+        </svg>
+        Northbeam
+      </a>
+      <nav class="site-nav">
+        <a class="nav-link" href="#">Sign in</a>
+        <a class="nav-link nav-link-strong" href="#">Contact sales</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <h1>Pricing for teams that run on revenue data</h1>
+      <p class="lede">Connect your billing and CRM stack, then track ARR, MRR, and churn in one place. Every plan starts with a free trial.</p>
+    </section>
+
+    <section class="billing container" aria-label="Billing period">
+      <div class="billing-toggle" role="group" aria-label="Billing period">
+        <button type="button" class="toggle-btn is-active" data-billing="monthly" aria-pressed="true">Monthly</button>
+        <button type="button" class="toggle-btn" data-billing="annual" aria-pressed="false">Annual <span class="save-tag">Save 20%</span></button>
+      </div>
+      <p class="toggle-note" id="toggle-note" aria-live="polite">Pay month to month. Switch to annual billing and save 20%.</p>
+    </section>
+
+    <section class="plans container" aria-label="Plans">
+      <article class="plan-card">
+        <header class="plan-head">
+          <h2 class="plan-name">Starter</h2>
+          <p class="plan-audience">For early-stage teams building their first revenue picture.</p>
+        </header>
+        <div class="plan-price">
+          <p class="price">
+            <span class="currency">$</span><span class="amount" data-monthly="45" data-annual="36">45</span><span class="per">/month</span>
+          </p>
+          <p class="bill-note">Billed monthly</p>
+        </div>
+        <a class="btn btn-primary" href="#">Start free trial</a>
+        <ul class="plan-features">
+          <li>Up to 2 data connections — Stripe, Chargebee, Salesforce</li>
+          <li>ARR, MRR, and churn dashboards</li>
+          <li>90 days of data history</li>
+          <li>Up to 5 seats</li>
+          <li>Email support</li>
+        </ul>
+      </article>
+
+      <article class="plan-card plan-card-featured">
+        <p class="recommended-tag">Recommended</p>
+        <header class="plan-head">
+          <h2 class="plan-name">Growth</h2>
+          <p class="plan-audience">For revenue teams that forecast, report, and present weekly.</p>
+        </header>
+        <div class="plan-price">
+          <p class="price">
+            <span class="currency">$</span><span class="amount" data-monthly="120" data-annual="96">120</span><span class="per">/month</span>
+          </p>
+          <p class="bill-note">Billed monthly</p>
+        </div>
+        <a class="btn btn-primary" href="#">Start free trial</a>
+        <ul class="plan-features">
+          <li>Unlimited data connections</li>
+          <li>Revenue forecasting and scenario planning</li>
+          <li>24 months of data history</li>
+          <li>Up to 25 seats</li>
+          <li>Scheduled exports and reports</li>
+          <li>Priority support</li>
+        </ul>
+      </article>
+
+      <article class="plan-card">
+        <header class="plan-head">
+          <h2 class="plan-name">Scale</h2>
+          <p class="plan-audience">For enterprises consolidating multiple entities and sources.</p>
+        </header>
+        <div class="plan-price">
+          <p class="price">
+            <span class="currency">$</span><span class="amount" data-monthly="280" data-annual="224">280</span><span class="per">/month</span>
+          </p>
+          <p class="bill-note">Billed monthly</p>
+        </div>
+        <a class="btn btn-ghost" href="#">Contact sales</a>
+        <ul class="plan-features">
+          <li>Everything in Growth</li>
+          <li>Warehouse sync and custom connectors</li>
+          <li>Multi-entity consolidation and multi-currency</li>
+          <li>Unlimited history, seats, and connections</li>
+          <li>SSO/SAML, audit logs, and data residency</li>
+          <li>Dedicated success manager</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="faq container">
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Is there a free trial?</summary>
+          <p>Starter and Growth include a free trial with full access to every feature in the plan. Scale includes a guided setup with our team, so you can see the plan on your own revenue data.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How does annual billing work?</summary>
+          <p>You can switch to annual billing at any time. You're billed once per year at 20% off the monthly rate; the per-month price shown is the monthly equivalent.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can we add seats later?</summary>
+          <p>Yes. Starter includes up to 5 seats and Growth up to 25. If you outgrow a plan, upgrade in settings — or <a href="#">contact sales</a> for a custom arrangement on Scale.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you support invoicing and purchase orders?</summary>
+          <p>Annual Scale contracts can be invoiced and support purchase orders. <a href="#">Contact sales</a> and we'll set up billing that fits your procurement process.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>Prices are in USD and exclude applicable taxes. Annual plans are billed once per year. For invoicing, SSO, or custom terms, <a href="#">contact sales</a>.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      var buttons = document.querySelectorAll('.toggle-btn');
+      var amounts = document.querySelectorAll('.amount');
+      var notes = document.querySelectorAll('.bill-note');
+      var toggleNote = document.getElementById('toggle-note');
+      var notesText = {
+        monthly: 'Billed monthly',
+        annual: 'Billed annually'
+      };
+      var toggleText = {
+        monthly: 'Pay month to month. Switch to annual billing and save 20%.',
+        annual: 'Billed once per year at 20% off the monthly rate.'
+      };
+
+      function setBilling(period) {
+        buttons.forEach(function (btn) {
+          var active = btn.dataset.billing === period;
+          btn.classList.toggle('is-active', active);
+          btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        amounts.forEach(function (el) {
+          el.textContent = el.dataset[period];
+        });
+        notes.forEach(function (el) {
+          el.textContent = notesText[period];
+        });
+        toggleNote.textContent = toggleText[period];
+      }
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          setBilling(btn.dataset.billing);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
